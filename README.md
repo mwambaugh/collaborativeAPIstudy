@@ -12,7 +12,7 @@ SO THAT I can immerse myself in my down time and avoid decision fatigue
 
 
 # Links 
-[Description] (url)
+[Link to Github Repository] (https://github.com/mwambaugh/collaborativeAPIstudy)
 [Description] (url)
 
 # Visuals
