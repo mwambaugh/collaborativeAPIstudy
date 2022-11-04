@@ -3,7 +3,7 @@
 //3. 
 
 
-function getAit() {
+function getApi() {
     var NPAPI = "https://developer.nps.gov/api/v1/parks?parkCode=acad&api_key=krIy1i5fL7pkviggfyuAli8fyRvpj4yejHKSRxSK"
 
     fetch(NPAPI)
