@@ -20,6 +20,9 @@ var npsAPIkey = "api_key=jFUiLTrcoquzkLV62lQbZqbdBOHbJVMRKkHy3F2Y";
 var omdbBaseAPIUrl = "https://www.omdbapi.com/?t=";
 var omdbAPIkey = "apikey=49e6bea4";
 
+//base string variables for Open library API
+var openlibraryBaseAPIUrl = "https://openlibrary.org/search.json?q=";
+
 //options for states API
 const options = {
 	method: 'GET',
@@ -29,27 +32,6 @@ const options = {
 	}
 };
 
-//get all states
-async function getAllStates() {
-    const response = await fetch('https://us-states.p.rapidapi.com/basic', options);
-    return await response.json()
-    .then(function (data) {
-        data.forEach(element => {
-            var option = document.createElement("option");
-            option.setAttribute("value", element.postal);
-            dataListEl1.appendChild(option);
-        });
-    });
-}
-
-// get movie
-async function getMovieInfo(requestUrl) {
-    const responce = await fetch(requestUrl);
-    return await responce.json()
-    .then(function (data) {
-       console.log(data);
-        });
-}
 
 // basic function to retrieve NP data
 async function getNPSdata(requestUrl) {
@@ -88,6 +70,38 @@ async function getParksListByActivityId(activityId, limit) {
     await getNPSdata(npsBaseAPIUrl+npsAPI_data[1]+"&limit="+limit+"&"+activityId+"&"+npsAPIkey);
 }
 
+//get all states (US States API)
+async function getAllStates() {
+    const response = await fetch('https://us-states.p.rapidapi.com/basic', options);
+    return await response.json()
+    .then(function (data) {
+        data.forEach(element => {
+            var option = document.createElement("option");
+            option.setAttribute("value", element.postal);
+            dataListEl1.appendChild(option);
+        });
+    });
+}
+
+// get movie (OMDB API)
+async function getMovieInfo(requestUrl) {
+    const responce = await fetch(requestUrl);
+    return await responce.json()
+    .then(function (data) {
+       console.log(data);
+        });
+}
+
+//get books
+async function getBooks(requestUrl) {
+    const responce = await fetch(requestUrl);
+    return await responce.json()
+    .then(function (data) {
+       console.log(data);
+        });
+}
+
+
 getActivitiesList(40);
 getAllStates();
 
@@ -98,8 +112,16 @@ findBtn.addEventListener("click", async function (ev) {
     var parksByState = dataArr[0].parks.filter(function(state) {
         return state.states == stateField.value;
     });
+    
+    //get movie info by park name (designation)
     parksByState.forEach(async element => {
         await getMovieInfo(omdbBaseAPIUrl+element.designation+"&"+omdbAPIkey);
+        console.log(element);
+    });
+
+    //get books by by park name (fullName)
+    parksByState.forEach(async element => {
+        await getBooks(openlibraryBaseAPIUrl+element.fullName.replace(" ","+"));
         console.log(element);
     });
 
