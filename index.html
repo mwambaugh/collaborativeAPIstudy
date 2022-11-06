@@ -3,15 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+<!--Materialize -->
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+     <!--Import Google Icon Font-->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!--Import materialize.css-->
+     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+     <!--Let browser know website is optimized for mobile-->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!--End of Materialize -->
+<link rel="stylesheet" href="./assets/style.css">
+    <title>Collobrative Multiple API Study</title>
+<!-- Jumbotron Styled Starts-->
+    <style>
+        header{
+            background-image: url(./assets/photos/st-mary-banner.jpeg);
+            background-size: cover;
+            background-position: center;
+            min-height: 600px;
+        }
+        @media screen and(max-width: 670px){
+        header{
+            min-height: 500px;
+        }    
+        }
+    </style>
+<!-- Jumbotron Style Ends-->
 </head>
+
+
+<!--Start of HTML body -->
+
+<!-- Breadcrumb Navigation Option Starts-->
 <body>
+
+<!-- kas500-national-parks-API-branch
     <input list="activitiesList" id="searchActivitiesField" name="activities">
     <datalist id="activitiesList"></datalist>
     <input list="statesList" id="stateField" name="activities">
     <datalist id="statesList"></datalist>
     <input type="button" value="Find parks" id="findBtn">
-    <script src="./assets/script.js"></script> 
+    <script src="./assets/script.js"></script> -->
+
+    <header>
+        <nav>
+            <div class="blue-grey darken-1 nav-wrapper">
+              <div class="col s12 align-right">
+                <a href="#!" class="breadcrumb">Breadcrumb</a>
+                <a href="#!" class="breadcrumb">Navigation</a>
+                <a href="#!" class="breadcrumb">Option</a>
+              </div>
+            </div>
+          </nav>
+<!--Breadcrumb Navigation Option Ends -->
+
+        <!--Navigation Bar Starts -->
+        <!-- Dropdown Structure -->
+        <!-- to activate dropdown feature: $(".dropdown-trigger").dropdown(); OR 
+        document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(elems, options);
+  });
+-->
+
+<!--Dropdown Navigation Content Starts-->
+<ul id="dropdown1" class="dropdown-content">
+    <li><a href="#!">dropdown area one</a></li>
+    <li class="divider"></li>
+    <li><a href="#!">dropdown area two</a></li>
+    <li class="divider"></li>
+    <li><a href="#!">dropdown area three</a></li>
+    <li class="divider"></li>
+    <li><a href="#!">dropdown area four</a></li>
+    <li class="divider"></li>
+  </ul>
+  <!-- Dropdown Navigation Content Ends-->
+ 
+
+  <!--Banner and Hoverable Navigation Bar Option Starts -->
+        <nav>
+            <div class="card-pannel blue-grey nav-wrapper">
+                <div class="brand-logo black-text blue-grey">API Project Website Title Here</div>  
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li class="hoverable btn-large blue-grey darken-2"><a href="">Hoverable</a></li>
+                <li class="hoverable btn-large blue-grey darken-2"><a href="">Navigation</a></li>
+                <li class="hoverable btn-large blue-grey darken-2"><a href="">Option</a></li>
+            <!-- Dropdown Trigger -->
+                <li><a class="hoverable btn-large dropdown-trigger blue-grey darken-2" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
+        </nav>
+
+  </div>
+</div>  
+<!--Banner and Hoverable Navigation Bar Option Ends -->
+    </header>
+<!--END OF HEADER -->
+
+
+
+<!--Page Layout Starts -->
+<!-- Search Bar and Submit Button Starts-->
+    <div class="container">
+        <div class="row">
+                <h2 class = "col s8">Search Here:</h2>
+            <input class="browser-default"></input>
+            <button class="hoverable card grey darken-4 btn">Submit Button</button>
+            </div>
+<!--Search Bar and Submit Button Ends -->
+
+<!--API Content, Later to be rendered in JS, AREA ONE STARTS -->
+            <div class="section">
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                <h2>API Generated Title 1</h2>
+                <div class="card-image">
+                    <img src="./assets/photos/st-mary-banner.jpeg">
+                    <span class="card-title">Card Title</span>
+                  </div>
+                    <article class="col s8 flow-text">API generated content could go here</article>
+                    <div class="card-action">
+                        <a href="#">link could go here</a>
+                        <a href="#">link could go here</a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+                        <div class ="divider"></div>
+<!-- CONTENT AREA ONE ENDS-->
+            
+<!--API Content, Later to be rendered in JS, AREA TWO STARTS -->
+                        <div class="section">
+                            <div class="card blue-grey darken-1">
+                                <div class="card-content white-text">
+                            <h2>API Generated Title 2</h2>
+                            <div class="card-image">
+                                <img src="./assets/photos/st-mary-banner.jpeg">
+                                <span class="card-title">Card Title</span>
+                              </div>
+                                <article class="col s8 flow-text">API generated content could go here</article>
+                                <div class="card-action">
+                                    <a href="#">link could go here</a>
+                                    <a href="#">link could go here</a>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                                    <div class ="divider"></div>
+<!--API Content, Later to be rendered in JS, AREA TWO ENDS -->
+
+<!--API Content, Later to be rendered in JS, AREA THREE, WEBCAM OPTION STARTS -->
+                        <div class="section">
+                            <div class=" col s6">
+                            <div class="card blue-grey darken-1">
+                                <div class="card-content white-text">    
+            <h2>Live API Generated Camera Option</h2>
+                <video class="responsive-video" controls>
+                     <source src="movie.mp4" type="video/mp4">
+              </video>
+            </div>
+                            </div>
+        </div>
+    </div>
+</div>
+                        <div class ="divider"></div>
+<!--API Content, Later to be rendered in JS, AREA THREE, WEBCAM OPTION ENDS -->
+
+        </div>
+    <!--Page Layout Ends-->
+    </div>
+<!--End of HTML body content-->
+
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+<!--Materalize JavaScript at end of body for optimized loading-->
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<script scr="./assets/script.js"></script>
+
 </body>
 </html>
+
+<!-- -->
