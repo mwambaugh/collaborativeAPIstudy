@@ -1,5 +1,7 @@
 // 1. setting var
 // 2. stating var
+// 3. add specific arrays for id on selectors of activites
+// 4. call arrays by id for activities instead of a list
 //Hooks
 var searchField = document.querySelector("#searchActivitiesField");
 var stateField = document.querySelector("#stateField");
@@ -10,6 +12,12 @@ var findBtn = document.querySelector("#findBtn");
 //var arrays
 var dataArr = [];
 var parksArr = [];
+// var activitesArr = ["fishing", "hiking", "snowshoeing", "tubing", "biking", "boating", "junior ranging program",
+//  "climbing", "skiing", "wildlife watchin"];
+var uniqueIDActivities = ["7CE6E935-F839-4FEC-A63E-052B1DEF39D2", "A59947B7-3376-49B4-AD02-C0423E08C5F7", "B12FAAB9-713F-4B38-83E4-A273F5A43C77", "AE42B46C-E4B7-4889-A122-08FE180371AE",
+"BFF8C027-7C8F-480B-A5F8-CD8CE490BFBA", "DF4A35E0-7983-4A3E-BC47-F37B872B0F25", "01D717BC-18BB-4FE4-95BA-6B13AD702038", 
+"4D06CEED-90C6-4B69-B264-32CC90B69BA6" ];
+
 
 //base string variables for nps API
 var npsBaseAPIUrl = "https://developer.nps.gov/api/v1"
@@ -32,6 +40,15 @@ const options = {
 	}
 };
 
+// fetch("npsBaseAPIUrl+npsAPIkey", {
+//     cache: 'reload',
+// })
+// .then(function (response) {
+//     return responce.json();
+//   })
+//   .then(function (data) {
+//     console.log(data);
+//   });
 
 // basic function to retrieve NP data
 async function getNPSdata(requestUrl) {
@@ -54,6 +71,19 @@ async function getActivitiesList(limit){
             });
             
 };
+
+// //  not working 
+// async function getActivitiesList(id){
+//     await getNPSdata(npsBaseAPIUrl+npsAPI_data+activityId&+uniqueIDActivities+npsAPIkey);
+//             dataArr.forEach(element => {
+//                 var optionEl = document.createElement("option");
+//                 optionEl.setAttribute("value", element.name);
+//                 dataListEl.append(optionEl);
+//             });
+            
+// };
+
+
 
 //get activity ID by name
 async function getActivityIdByName(name) {
