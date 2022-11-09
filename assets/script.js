@@ -159,8 +159,13 @@ function getAPI() {
         for (let i =0; i < parkNum; i++){
             var parkNameList = data.data[i].name
             console.log(parkNameList)
-            
+            var dropDown2 = document.getElementById("dropdown2")
+            var newli = document.createElement("li")
 
+            newli.textContent = parkNameList
+
+            newli.append(newAtag)
+            dropDown2.append(newli)
 
         }
     })
