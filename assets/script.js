@@ -6,7 +6,7 @@ var searchField = document.querySelector("#searchActivitiesField");
 var stateField = document.querySelector("#stateField");
 var dataListEl = document.querySelector("#activitiesList");
 var dataListEl1 = document.querySelector("#statesList");
-var findBtn = document.querySelector("#findBtn");
+//Btn = document.querySelector("#findBtn");
 
 var displayCardEl = document.getElementsByClassName("section-1")
 var parkNameDisplay = document.getElementById("park")
@@ -16,6 +16,7 @@ var parkDescription = document.getElementsByClassName("desription")
 var parkNameDisplay = document.getElementById("park")
 var parkImageDisplay = document.getElementById("parkImage")
 var parkDescription = document.getElementsByClassName("desription")
+var allStatesDropdown = document.querySelector("#dropdown1");
 
 //var arrays
 var dataArr = [];
@@ -290,10 +291,11 @@ const options = {
 function getAllStates() {
 	allStates = (typeof(localStorage) !== "undefined")?JSON.parse(localStorage.getItem("allStates")):allStates;
     allStates.forEach(element => {
-        var option = document.createElement("option");
-        option.setAttribute("value", element.stateName);
-        option.setAttribute("id",element.abbreviation);
-        dataListEl1.appendChild(option);
+        //console.log(element.stateName);
+        var liEl = document.createElement("li");
+        liEl.innerHTML=element.stateName;
+        liEl.setAttribute("id",element.abbreviation);
+        allStatesDropdown.appendChild(liEl);
     });
 }
 //Anton - call the function
@@ -311,15 +313,15 @@ async function getNPSdata(requestUrl) {
 }
 
 // get list of activities list
-async function getActivitiesList(limit){
-    await getNPSdata(npsBaseAPIUrl+npsAPI_data[0]+"&limit="+limit+"&"+npsAPIkey);
-            dataArr.forEach(element => {
-                var optionEl = document.createElement("option");
-                optionEl.setAttribute("value", element.name);
-                dataListEl.append(optionEl);
-            });
+// async function getActivitiesList(limit){
+//     await getNPSdata(npsBaseAPIUrl+npsAPI_data[0]+"&limit="+limit+"&"+npsAPIkey);
+//             dataArr.forEach(element => {
+//                 var optionEl = document.createElement("option");
+//                 optionEl.setAttribute("value", element.name);
+//                 dataListEl.append(optionEl);
+//             });
             
-};
+// };
 
 //get activity ID by name
 async function getActivityIdByName(name) {
@@ -382,16 +384,16 @@ async function getPlaces(requestUrl) {
 }
 
 
-getActivitiesList(40);
+//getActivitiesList(40);
 // getAllStates();
 
 //find button handler
-findBtn.addEventListener("click", async function (ev) {
-    var activityId = "id="+ await getActivityIdByName(searchField.value);
-    await getParksListByActivityId(activityId,1);
-    var parksByState = dataArr[0].parks.filter(function(state) {
-        return state.states == stateField.value;
-    });
+// findBtn.addEventListener("click", async function (ev) {
+//     var activityId = "id="+ await getActivityIdByName(searchField.value);
+//     await getParksListByActivityId(activityId,1);
+//     var parksByState = dataArr[0].parks.filter(function(state) {
+//         return state.states == stateField.value;
+//     });
     
     // //get movie info by park name (designation)
     // parksByState.forEach(async element => {
@@ -408,20 +410,19 @@ findBtn.addEventListener("click", async function (ev) {
     //getPlaces
     //parksByState.forEach(async element => {
         
-        await getPlaces(npsBaseAPIUrl+npsAPI_data[3]+"&parkCode="+parksByState[0].parkCode+"&limit=1"+"&stateCode="+ stateField.value+"&"+npsAPIkey);
+        // await getPlaces(npsBaseAPIUrl+npsAPI_data[3]+"&parkCode="+parksByState[0].parkCode+"&limit=1"+"&stateCode="+ stateField.value+"&"+npsAPIkey);
     //});
 
 
 
-});
+//});
 
 //1. api pull config on console to find data is being pulled
 //2. what event we are pulling from the api
 //3. 
 
 
-function getAPI() {
-    userChoice = "WA"
+function getAPI(userChoice) {
     var NPAPI = "https://developer.nps.gov/api/v1/parks?&statecode="+userChoice+"&api_key=krIy1i5fL7pkviggfyuAli8fyRvpj4yejHKSRxSK"
 
     fetch(NPAPI)
@@ -464,6 +465,24 @@ displayCardEl.innerHTML = "";
 
 }
 
-getAPI();
+//getAPI();
 getweatherdata();
 // displayData()
+
+//Anton - dropdown trigger
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(elems, options);
+});
+
+//Anton - dropdown all states event listener
+document.addEventListener("click",function (ev) {
+    var stateUserChoice ="";
+    if(ev.target.parentNode.id === "dropdown1"){
+        stateUserChoice = ev.target.id;
+        getAPI(stateUserChoice);
+    }
+    if(ev.target.parentNode.id === "dropdown2"){
+        // To do Ravi's state parks list
+    }
+})
