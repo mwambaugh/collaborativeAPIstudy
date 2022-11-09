@@ -442,8 +442,6 @@ function getAPI(userChoice) {
             var newli = document.createElement("li")
 
             newli.textContent = parkNameList
-
-            newli.append(newAtag)
             dropDown2.append(newli)
 
         }
