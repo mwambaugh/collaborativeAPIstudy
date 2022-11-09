@@ -13,7 +13,7 @@ var parksArr = [];
 
 //base string variables for nps API
 var npsBaseAPIUrl = "https://developer.nps.gov/api/v1"
-var npsAPI_data = ["/activities?","/activities/parks?","/topics?"]
+var npsAPI_data = ["/activities?","/activities/parks?","/topics?","/places?"]
 var npsAPIkey = "api_key=jFUiLTrcoquzkLV62lQbZqbdBOHbJVMRKkHy3F2Y";
 
 //base string variables for OMDB API
@@ -101,6 +101,18 @@ async function getBooks(requestUrl) {
         });
 }
 
+//get places (NPA API)
+async function getPlaces(requestUrl) {
+    const responce = await fetch(requestUrl);
+    return await responce.json()
+    .then(function (data) {
+       console.log(data); 
+       var card = document.querySelectorAll(".card-image img");
+       console.log(card[0]);
+       card[0].setAttribute("src", data.data[0].images[0].url);
+            });
+}
+
 
 getActivitiesList(40);
 getAllStates();
@@ -113,17 +125,25 @@ findBtn.addEventListener("click", async function (ev) {
         return state.states == stateField.value;
     });
     
-    //get movie info by park name (designation)
-    parksByState.forEach(async element => {
-        await getMovieInfo(omdbBaseAPIUrl+element.designation+"&"+omdbAPIkey);
-        console.log(element);
-    });
+    // //get movie info by park name (designation)
+    // parksByState.forEach(async element => {
+    //     await getMovieInfo(omdbBaseAPIUrl+element.designation+"&"+omdbAPIkey);
+    //     console.log(element);
+    // });
 
-    //get books by by park name (fullName)
-    parksByState.forEach(async element => {
-        await getBooks(openlibraryBaseAPIUrl+element.fullName.replace(" ","+"));
-        console.log(element);
-    });
+    // //get books by by park name (fullName)
+    // parksByState.forEach(async element => {
+    //     await getBooks(openlibraryBaseAPIUrl+element.fullName.replace(" ","+"));
+    //     console.log(element);
+    // });
+
+    //getPlaces
+    //parksByState.forEach(async element => {
+        
+        await getPlaces(npsBaseAPIUrl+npsAPI_data[3]+"&parkCode="+parksByState[0].parkCode+"&limit=1"+"&stateCode="+ stateField.value+"&"+npsAPIkey);
+    //});
+
+
 
 });
 
