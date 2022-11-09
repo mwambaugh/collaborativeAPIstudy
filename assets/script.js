@@ -139,7 +139,8 @@ findBtn.addEventListener("click", async function (ev) {
 
 
 function getAPI() {
-    var NPAPI = "https://developer.nps.gov/api/v1/parks?&statecode=WA&api_key=krIy1i5fL7pkviggfyuAli8fyRvpj4yejHKSRxSK"
+    userChoice = "WA"
+    var NPAPI = "https://developer.nps.gov/api/v1/parks?&statecode="+userChoice+"&api_key=krIy1i5fL7pkviggfyuAli8fyRvpj4yejHKSRxSK"
 
     fetch(NPAPI)
         .then(function (response) {
@@ -150,7 +151,7 @@ function getAPI() {
     .then(function (data) {
         console.log(data);
     })
-        
+
       
 }
 
@@ -169,17 +170,17 @@ function getweatherdata() {
         })
         .then(function(data){
             console.log(data, "teeeeessssssssssttt IT WORKS!!!!!")
-            // displayData(data)
+            displayData(data)
 
         })   
       
 }
 
-// function displayData(data){
-// displayCardEl.innerHTML = "";
+function displayData(data){
+displayCardEl.innerHTML = "";
 
 
-// }
+}
 
 getAPI();
 getweatherdata();
