@@ -1,11 +1,21 @@
 // 1. setting var
 // 2. stating var
 //Hooks
+var api_key = "api_key=krIy1i5fL7pkviggfyuAli8fyRvpj4yejHKSRxSK"
 var searchField = document.querySelector("#searchActivitiesField");
 var stateField = document.querySelector("#stateField");
 var dataListEl = document.querySelector("#activitiesList");
 var dataListEl1 = document.querySelector("#statesList");
 var findBtn = document.querySelector("#findBtn");
+
+var displayCardEl = document.getElementsByClassName("section-1")
+var parkNameDisplay = document.getElementById("park")
+var parkImageDisplay = document.getElementById("parkImage")
+var parkDescription = document.getElementsByClassName("desription")
+
+var parkNameDisplay = document.getElementById("park")
+var parkImageDisplay = document.getElementById("parkImage")
+var parkDescription = document.getElementsByClassName("desription")
 
 //var arrays
 var dataArr = [];
@@ -13,7 +23,7 @@ var parksArr = [];
 
 //base string variables for nps API
 var npsBaseAPIUrl = "https://developer.nps.gov/api/v1"
-var npsAPI_data = ["/activities?","/activities/parks?","/topics?","/places?"]
+var npsAPI_data = ["/activities?","/activities/parks?","/topics?","/parks?","/places?"]
 var npsAPIkey = "api_key=jFUiLTrcoquzkLV62lQbZqbdBOHbJVMRKkHy3F2Y";
 
 //base string variables for OMDB API
@@ -71,17 +81,17 @@ async function getParksListByActivityId(activityId, limit) {
 }
 
 //get all states (US States API)
-async function getAllStates() {
-    const response = await fetch('https://us-states.p.rapidapi.com/basic', options);
-    return await response.json()
-    .then(function (data) {
-        data.forEach(element => {
-            var option = document.createElement("option");
-            option.setAttribute("value", element.postal);
-            dataListEl1.appendChild(option);
-        });
-    });
-}
+// async function getAllStates() {
+//     const response = await fetch('https://us-states.p.rapidapi.com/basic', options);
+//     return await response.json()
+//     .then(function (data) {
+//         data.forEach(element => {
+//             var option = document.createElement("option");
+//             option.setAttribute("value", element.postal);
+//             dataListEl1.appendChild(option);
+//         });
+//     });
+// }
 
 // get movie (OMDB API)
 async function getMovieInfo(requestUrl) {
@@ -115,7 +125,7 @@ async function getPlaces(requestUrl) {
 
 
 getActivitiesList(40);
-getAllStates();
+// getAllStates();
 
 //find button handler
 findBtn.addEventListener("click", async function (ev) {
@@ -152,8 +162,9 @@ findBtn.addEventListener("click", async function (ev) {
 //3. 
 
 
-function getApi() {
-    var NPAPI = "https://developer.nps.gov/api/v1/parks?parkCode=acad&api_key=krIy1i5fL7pkviggfyuAli8fyRvpj4yejHKSRxSK"
+function getAPI() {
+    userChoice = "WA"
+    var NPAPI = "https://developer.nps.gov/api/v1/parks?&statecode="+userChoice+"&api_key=krIy1i5fL7pkviggfyuAli8fyRvpj4yejHKSRxSK"
 
     fetch(NPAPI)
         .then(function (response) {
@@ -164,6 +175,56 @@ function getApi() {
     .then(function (data) {
         console.log(data);
     })
-        
+
       
 }
+
+function getweatherdata() {
+    var lat = 47.8021//data.latitute
+    var lon = 123.6044//date.longitute
+    queryURL = "http://api.openweathermap.org/data/2.5/air_pollution?lat="+lat+"&"+"lon="+lon+"&appid=5106b1dd029f01436cf1eff2fabc4fcf"
+
+    fetch(queryURL)
+        .then(function (response){
+            if(!response.ok) {
+                console.log("error","tessssttttttttt NOT WORKING!!!")
+            } else {
+                return response.json();
+            }
+        })
+        .then(function(data){
+            console.log(data, "teeeeessssssssssttt IT WORKS!!!!!")
+            displayData(data)
+
+        })   
+      
+}
+
+function displayData(data){
+displayCardEl.innerHTML = "";
+
+
+}
+
+getAPI();
+getweatherdata();
+// displayData()
+
+renderCard(data) {
+var parkInfo = data;
+var parkName = document.createElement("h2");
+var parkPic = document.createElement("img");
+var parkDescription = document.createElement("p");
+
+
+}
+
+displayCardEl.append(parkName);
+displayCardEl.append(parkPic);
+displayCardEl.append(parkDescription);
+}
+
+getAPI();
+getweatherdata();
+// displayData()
+
