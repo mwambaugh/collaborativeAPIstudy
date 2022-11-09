@@ -138,8 +138,8 @@ findBtn.addEventListener("click", async function (ev) {
 //3. 
 
 
-function getApi() {
-    var NPAPI = "https://developer.nps.gov/api/v1/parks?parkCode=acad&api_key=krIy1i5fL7pkviggfyuAli8fyRvpj4yejHKSRxSK"
+function getAPI() {
+    var NPAPI = "https://developer.nps.gov/api/v1/parks?&statecode=WA&api_key=krIy1i5fL7pkviggfyuAli8fyRvpj4yejHKSRxSK"
 
     fetch(NPAPI)
         .then(function (response) {
@@ -175,5 +175,12 @@ function getweatherdata() {
       
 }
 
+// function displayData(data){
+// displayCardEl.innerHTML = "";
+
+
+// }
+
+getAPI();
 getweatherdata();
 // displayData()
