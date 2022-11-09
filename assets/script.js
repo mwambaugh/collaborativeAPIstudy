@@ -154,9 +154,21 @@ function getAPI() {
 
     .then(function (data) {
         console.log(data);
+        var parkNum = data.data.length
+        console.log(parkNum, "TTEESSSTTT Array length")
+        for (let i =0; i < parkNum; i++){
+            var parkNameList = data.data[i].name
+            console.log(parkNameList)
+            
+
+
+        }
     })
 
-      
+        
+    
+     
+
 }
 
 function getweatherdata() {
@@ -177,34 +189,14 @@ function getweatherdata() {
             displayData(data)
 
         })   
-      
 }
 
 function displayData(data){
 displayCardEl.innerHTML = "";
-
-
 }
 
 getAPI();
 getweatherdata();
 // displayData()
 
-renderCard(data) {
-var parkInfo = data;
-var parkName = document.createElement("h2");
-var parkPic = document.createElement("img");
-var parkDescription = document.createElement("p");
-
-
-}
-
-displayCardEl.append(parkName);
-displayCardEl.append(parkPic);
-displayCardEl.append(parkDescription);
-}
-
-getAPI();
-getweatherdata();
-// displayData()
 
