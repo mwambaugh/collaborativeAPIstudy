@@ -433,9 +433,26 @@ function getAPI(userChoice) {
 
     .then(function (data) {
         console.log(data);
+        var parkNum = data.data.length
+        console.log(parkNum, "TTEESSSTTT Array length")
+        for (let i =0; i < parkNum; i++){
+            var parkNameList = data.data[i].name
+            console.log(parkNameList)
+            var dropDown2 = document.getElementById("dropdown2")
+            var newli = document.createElement("li")
+
+            newli.textContent = parkNameList
+
+            newli.append(newAtag)
+            dropDown2.append(newli)
+
+        }
     })
 
-      
+        
+    
+     
+
 }
 
 function getweatherdata() {
@@ -456,18 +473,16 @@ function getweatherdata() {
             displayData(data)
 
         })   
-      
 }
 
 function displayData(data){
 displayCardEl.innerHTML = "";
-
-
 }
 
 //getAPI();
 getweatherdata();
 // displayData()
+
 
 //Anton - dropdown trigger
 document.addEventListener('DOMContentLoaded', function() {
