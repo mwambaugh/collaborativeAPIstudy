@@ -6,7 +6,7 @@ var searchField = document.querySelector("#searchActivitiesField");
 var stateField = document.querySelector("#stateField");
 var dataListEl = document.querySelector("#activitiesList");
 var dataListEl1 = document.querySelector("#statesList");
-var findBtn = document.querySelector("#findBtn");
+//Btn = document.querySelector("#findBtn");
 
 var displayCardEl = document.getElementsByClassName("section-1")
 var parkNameDisplay = document.getElementById("park")
@@ -16,14 +16,258 @@ var parkDescription = document.getElementsByClassName("desription")
 var parkNameDisplay = document.getElementById("park")
 var parkImageDisplay = document.getElementById("parkImage")
 var parkDescription = document.getElementsByClassName("desription")
+var allStatesDropdown = document.querySelector("#dropdown1");
 
 //var arrays
 var dataArr = [];
 var parksArr = [];
 
+//Anton - all states array
+var allStates = [
+    {
+        stateName: "Alabama",
+        abbreviation: "AL"
+    },
+    {
+        stateName: "Alaska",
+        abbreviation: "AK"
+    },
+    {
+        stateName: "American Samoa",
+        abbreviation: "AS"
+    },
+    {
+        stateName: "Arizona",
+        abbreviation: "AZ"
+    },
+    {
+        stateName: "Arkansas",
+        abbreviation: "AR"
+    },
+    {
+        stateName: "California",
+        abbreviation: "CA"
+    },
+    {
+        stateName: "Colorado",
+        abbreviation: "CO"
+    },
+    {
+        stateName: "Connecticut",
+        abbreviation: "CT"
+    },
+    {
+        stateName: "Delaware",
+        abbreviation: "DE"
+    },
+    {
+        stateName: "District Of Columbia",
+        abbreviation: "DC"
+    },
+    {
+        stateName: "Federated States Of Micronesia",
+        abbreviation: "FM"
+    },
+    {
+        stateName: "Florida",
+        abbreviation: "FL"
+    },
+    {
+        stateName: "Georgia",
+        abbreviation: "GA"
+    },
+    {
+        stateName: "Guam",
+        abbreviation: "GU"
+    },
+    {
+        stateName: "Hawaii",
+        abbreviation: "HI"
+    },
+    {
+        stateName: "Idaho",
+        abbreviation: "ID"
+    },
+    {
+        stateName: "Illinois",
+        abbreviation: "IL"
+    },
+    {
+        stateName: "Indiana",
+        abbreviation: "IN"
+    },
+    {
+        stateName: "Iowa",
+        abbreviation: "IA"
+    },
+    {
+        stateName: "Kansas",
+        abbreviation: "KS"
+    },
+    {
+        stateName: "Kentucky",
+        abbreviation: "KY"
+    },
+    {
+        stateName: "Louisiana",
+        abbreviation: "LA"
+    },
+    {
+        stateName: "Maine",
+        abbreviation: "ME"
+    },
+    {
+        stateName: "Marshall Islands",
+        abbreviation: "MH"
+    },
+    {
+        stateName: "Maryland",
+        abbreviation: "MD"
+    },
+    {
+        stateName: "Massachusetts",
+        abbreviation: "MA"
+    },
+    {
+        stateName: "Michigan",
+        abbreviation: "MI"
+    },
+    {
+        stateName: "Minnesota",
+        abbreviation: "MN"
+    },
+    {
+        stateName: "Mississippi",
+        abbreviation: "MS"
+    },
+    {
+        stateName: "Missouri",
+        abbreviation: "MO"
+    },
+    {
+        stateName: "Montana",
+        abbreviation: "MT"
+    },
+    {
+        stateName: "Nebraska",
+        abbreviation: "NE"
+    },
+    {
+        stateName: "Nevada",
+        abbreviation: "NV"
+    },
+    {
+        stateName: "New Hampshire",
+        abbreviation: "NH"
+    },
+    {
+        stateName: "New Jersey",
+        abbreviation: "NJ"
+    },
+    {
+        stateName: "New Mexico",
+        abbreviation: "NM"
+    },
+    {
+        stateName: "New York",
+        abbreviation: "NY"
+    },
+    {
+        stateName: "North Carolina",
+        abbreviation: "NC"
+    },
+    {
+        stateName: "North Dakota",
+        abbreviation: "ND"
+    },
+    {
+        stateName: "Northern Mariana Islands",
+        abbreviation: "MP"
+    },
+    {
+        stateName: "Ohio",
+        abbreviation: "OH"
+    },
+    {
+        stateName: "Oklahoma",
+        abbreviation: "OK"
+    },
+    {
+        stateName: "Oregon",
+        abbreviation: "OR"
+    },
+    {
+        stateName: "Palau",
+        abbreviation: "PW"
+    },
+    {
+        stateName: "Pennsylvania",
+        abbreviation: "PA"
+    },
+    {
+        stateName: "Puerto Rico",
+        abbreviation: "PR"
+    },
+    {
+        stateName: "Rhode Island",
+        abbreviation: "RI"
+    },
+    {
+        stateName: "South Carolina",
+        abbreviation: "SC"
+    },
+    {
+        stateName: "South Dakota",
+        abbreviation: "SD"
+    },
+    {
+        stateName: "Tennessee",
+        abbreviation: "TN"
+    },
+    {
+        stateName: "Texas",
+        abbreviation: "TX"
+    },
+    {
+        stateName: "Utah",
+        abbreviation: "UT"
+    },
+    {
+        stateName: "Vermont",
+        abbreviation: "VT"
+    },
+    {
+        stateName: "Virgin Islands",
+        abbreviation: "VI"
+    },
+    {
+        stateName: "Virginia",
+        abbreviation: "VA"
+    },
+    {
+        stateName: "Washington",
+        abbreviation: "WA"
+    },
+    {
+        stateName: "West Virginia",
+        abbreviation: "WV"
+    },
+    {
+        stateName: "Wisconsin",
+        abbreviation: "WI"
+    },
+    {
+        stateName: "Wyoming",
+        abbreviation: "WY"
+    }
+];
+
+//Anton - set local storage
+localStorage.setItem("allStates", JSON.stringify(allStates));
+
 //base string variables for nps API
 var npsBaseAPIUrl = "https://developer.nps.gov/api/v1"
-var npsAPI_data = ["/activities?","/activities/parks?","/topics?","/parks?"]
+var npsAPI_data = ["/activities?","/activities/parks?","/topics?","/parks?","/places?"]
 var npsAPIkey = "api_key=jFUiLTrcoquzkLV62lQbZqbdBOHbJVMRKkHy3F2Y";
 
 //base string variables for OMDB API
@@ -43,6 +287,20 @@ const options = {
 };
 
 
+//Anton - function generate data list with All states
+function getAllStates() {
+	allStates = (typeof(localStorage) !== "undefined")?JSON.parse(localStorage.getItem("allStates")):allStates;
+    allStates.forEach(element => {
+        //console.log(element.stateName);
+        var liEl = document.createElement("li");
+        liEl.innerHTML=element.stateName;
+        liEl.setAttribute("id",element.abbreviation);
+        allStatesDropdown.appendChild(liEl);
+    });
+}
+//Anton - call the function
+getAllStates();
+
 // basic function to retrieve NP data
 async function getNPSdata(requestUrl) {
     const responce = await fetch(requestUrl);
@@ -55,15 +313,15 @@ async function getNPSdata(requestUrl) {
 }
 
 // get list of activities list
-async function getActivitiesList(limit){
-    await getNPSdata(npsBaseAPIUrl+npsAPI_data[0]+"&limit="+limit+"&"+npsAPIkey);
-            dataArr.forEach(element => {
-                var optionEl = document.createElement("option");
-                optionEl.setAttribute("value", element.name);
-                dataListEl.append(optionEl);
-            });
+// async function getActivitiesList(limit){
+//     await getNPSdata(npsBaseAPIUrl+npsAPI_data[0]+"&limit="+limit+"&"+npsAPIkey);
+//             dataArr.forEach(element => {
+//                 var optionEl = document.createElement("option");
+//                 optionEl.setAttribute("value", element.name);
+//                 dataListEl.append(optionEl);
+//             });
             
-};
+// };
 
 //get activity ID by name
 async function getActivityIdByName(name) {
@@ -93,6 +351,8 @@ async function getParksListByActivityId(activityId, limit) {
 //     });
 // }
 
+
+
 // get movie (OMDB API)
 async function getMovieInfo(requestUrl) {
     const responce = await fetch(requestUrl);
@@ -111,39 +371,58 @@ async function getBooks(requestUrl) {
         });
 }
 
+//get places (NPA API)
+async function getPlaces(requestUrl) {
+    const responce = await fetch(requestUrl);
+    return await responce.json()
+    .then(function (data) {
+       console.log(data); 
+       var card = document.querySelectorAll(".card-image img");
+       console.log(card[0]);
+       card[0].setAttribute("src", data.data[0].images[0].url);
+            });
+}
 
-getActivitiesList(40);
+
+//getActivitiesList(40);
 // getAllStates();
 
 //find button handler
-findBtn.addEventListener("click", async function (ev) {
-    var activityId = "id="+ await getActivityIdByName(searchField.value);
-    await getParksListByActivityId(activityId,1);
-    var parksByState = dataArr[0].parks.filter(function(state) {
-        return state.states == stateField.value;
-    });
+// findBtn.addEventListener("click", async function (ev) {
+//     var activityId = "id="+ await getActivityIdByName(searchField.value);
+//     await getParksListByActivityId(activityId,1);
+//     var parksByState = dataArr[0].parks.filter(function(state) {
+//         return state.states == stateField.value;
+//     });
     
-    //get movie info by park name (designation)
-    parksByState.forEach(async element => {
-        await getMovieInfo(omdbBaseAPIUrl+element.designation+"&"+omdbAPIkey);
-        console.log(element);
-    });
+    // //get movie info by park name (designation)
+    // parksByState.forEach(async element => {
+    //     await getMovieInfo(omdbBaseAPIUrl+element.designation+"&"+omdbAPIkey);
+    //     console.log(element);
+    // });
 
-    //get books by by park name (fullName)
-    parksByState.forEach(async element => {
-        await getBooks(openlibraryBaseAPIUrl+element.fullName.replace(" ","+"));
-        console.log(element);
-    });
+    // //get books by by park name (fullName)
+    // parksByState.forEach(async element => {
+    //     await getBooks(openlibraryBaseAPIUrl+element.fullName.replace(" ","+"));
+    //     console.log(element);
+    // });
 
-});
+    //getPlaces
+    //parksByState.forEach(async element => {
+        
+        // await getPlaces(npsBaseAPIUrl+npsAPI_data[3]+"&parkCode="+parksByState[0].parkCode+"&limit=1"+"&stateCode="+ stateField.value+"&"+npsAPIkey);
+    //});
+
+
+
+//});
 
 //1. api pull config on console to find data is being pulled
 //2. what event we are pulling from the api
 //3. 
 
 
-function getAPI() {
-    userChoice = "WA"
+function getAPI(userChoice) {
     var NPAPI = "https://developer.nps.gov/api/v1/parks?&statecode="+userChoice+"&api_key=krIy1i5fL7pkviggfyuAli8fyRvpj4yejHKSRxSK"
 
     fetch(NPAPI)
@@ -186,25 +465,24 @@ displayCardEl.innerHTML = "";
 
 }
 
-getAPI();
+//getAPI();
 getweatherdata();
 // displayData()
 
-renderCard(data) {
-var parkInfo = data;
-var parkName = document.createElement("h2");
-var parkPic = document.createElement("img");
-var parkDescription = document.createElement("p");
+//Anton - dropdown trigger
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(elems, options);
+});
 
-
-}
-
-displayCardEl.append(parkName);
-displayCardEl.append(parkPic);
-displayCardEl.append(parkDescription);
-}
-
-getAPI();
-getweatherdata();
-// displayData()
-
+//Anton - dropdown all states event listener
+document.addEventListener("click",function (ev) {
+    var stateUserChoice ="";
+    if(ev.target.parentNode.id === "dropdown1"){
+        stateUserChoice = ev.target.id;
+        getAPI(stateUserChoice);
+    }
+    if(ev.target.parentNode.id === "dropdown2"){
+        // To do Ravi's state parks list
+    }
+})
