@@ -9,6 +9,7 @@ var dataListEl1 = document.querySelector("#statesList");
 var findBtn = document.querySelector("#findBtn");
 
 var displayCardEl = document.getElementsByClassName("section-1")
+
 var parkNameDisplay = document.getElementById("park")
 var parkImageDisplay = document.getElementById("parkImage")
 var parkDescription = document.getElementsByClassName("desription")
@@ -185,3 +186,18 @@ displayCardEl.innerHTML = "";
 getAPI();
 getweatherdata();
 // displayData()
+=======
+renderCard(data) {
+var parkInfo = data;
+var parkName = document.createElement("h2");
+var parkPic = document.createElement("img");
+var parkDescription = document.createElement("p");
+
+parkName.textContent = parkInfo.//whatever path to get park name;
+parkPic.setAttribute("src", "");
+parkDescription.textContent = parkInfo.//whatever path gets description
+
+displayCardEl.append(parkName);
+displayCardEl.append(parkPic);
+displayCardEl.append(parkDescription);
+}
