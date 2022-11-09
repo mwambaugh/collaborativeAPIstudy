@@ -13,6 +13,10 @@ var parkNameDisplay = document.getElementById("park")
 var parkImageDisplay = document.getElementById("parkImage")
 var parkDescription = document.getElementsByClassName("desription")
 
+var parkNameDisplay = document.getElementById("park")
+var parkImageDisplay = document.getElementById("parkImage")
+var parkDescription = document.getElementsByClassName("desription")
+
 //var arrays
 var dataArr = [];
 var parksArr = [];
@@ -185,3 +189,22 @@ displayCardEl.innerHTML = "";
 getAPI();
 getweatherdata();
 // displayData()
+
+renderCard(data) {
+var parkInfo = data;
+var parkName = document.createElement("h2");
+var parkPic = document.createElement("img");
+var parkDescription = document.createElement("p");
+
+
+}
+
+displayCardEl.append(parkName);
+displayCardEl.append(parkPic);
+displayCardEl.append(parkDescription);
+}
+
+getAPI();
+getweatherdata();
+// displayData()
+
