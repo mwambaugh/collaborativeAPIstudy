@@ -15,7 +15,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <!--End of Materialize -->
 <link rel="stylesheet" href="./assets/style.css">
-    <title>Collobrative Multiple API Study</title>
+    <title>United States' National Parks Traveler's Dashboard</title>
 <!-- Jumbotron Styled Starts-->
     <style>
         header{
@@ -30,27 +30,10 @@
         }    
         }
     </style>
-<!-- Jumbotron Style Ends-->
 </head>
 
 
-<!--Start of HTML body -->
-
-<!-- Breadcrumb Navigation Option Starts-->
-<body>
-    <header>
-        <nav>
-            <div class="blue-grey darken-1 nav-wrapper">
-              <div class="col s12 align-right">
-                <a href="#!" class="breadcrumb">Breadcrumb</a>
-                <a href="#!" class="breadcrumb">Navigation</a>
-                <a href="#!" class="breadcrumb">Option</a>
-              </div>
-            </div>
-          </nav>
-<!--Breadcrumb Navigation Option Ends -->
-
-        <!--Navigation Bar Starts -->
+ <!--Navigation Bar Starts -->
         <!-- Dropdown Structure -->
         <!-- to activate dropdown feature: $(".dropdown-trigger").dropdown(); OR 
         document.addEventListener('DOMContentLoaded', function() {
@@ -59,30 +42,26 @@
   });
 -->
 
+
+<!--Start of HTML body -->
+<body>
+    <header>
+
 <!--Dropdown Navigation Content Starts-->
 <ul id="dropdown1" class="dropdown-content">
-    <li><a href="#!">WA</a></li>
-    <li class="divider"></li>
-    <li><a href="#!">MT</a></li>
-    <li class="divider"></li>
-    <li><a href="#!">OR</a></li>
-    <li class="divider"></li>
-    <li><a href="#!">ID</a></li>
-    <li class="divider"></li>
   </ul>
   <!-- Dropdown Navigation Content Ends-->
- 
+  <ul id="dropdown2" class="dropdown-content">
 
   <!--Banner and Hoverable Navigation Bar Option Starts -->
         <nav>
             <div class="card-pannel blue-grey nav-wrapper">
-                <div class="brand-logo black-text blue-grey">API Project Website Title Here</div>  
+                <div class="brand-logo black-text blue-grey">US National Parks Traveler's Dashboard</div>  
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li class="hoverable btn-large blue-grey darken-2"><a href="">Hoverable</a></li>
-                <li class="hoverable btn-large blue-grey darken-2"><a href="">Navigation</a></li>
-                <li class="hoverable btn-large blue-grey darken-2"><a href="">Option</a></li>
+                <li class="hoverable btn-large blue-grey darken-2"><a href="">Home</a></li>
+                <li class="hoverable btn-large blue-grey darken-2"><a href="">In State Parks</a></li>
+                <li class="hoverable btn-large blue-grey darken-2"><a href="">Air Quality</a></li>
             <!-- Dropdown Trigger -->
-                <li><a class="hoverable btn-large dropdown-trigger blue-grey darken-2" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
         </nav>
 
@@ -96,13 +75,18 @@
 <!-- Search Bar and Submit Button Starts-->
     <div class="container">
         <div class="row">
-            <h3 class = "col s8">Search Activites:</h3>
+            <!-- <h3 class = "col s8">Search Activites:</h3>
             <input list="activitiesList" id="searchActivitiesField" name="activities">
-            <datalist id="activitiesList"></datalist>
-            <h3 class = "col s8">Search States:</h3>
-            <input list="statesList" id="stateField" name="activities">
+            <datalist id="activitiesList"></datalist> -->
+            
+            <h3 class = "col s8 btn-large dropdown-trigger blue-grey darken-2 href="#!" data-target="dropdown1" ><i class="material-icons right"></i></a>Select State:</h3>
+            <!-- <input list="statesList" id="stateField" name="activities"> -->
+
+            <!-- <input type="button" value="Find parks" id="findBtn" class="hoverable card grey darken-4 btn"> -->
+            
+            <h3 class = "col s8 btn-large dropdown-trigger blue-grey darken-2 href="#!" data-target="dropdown1"><i class="material-icons right"></i></a>Select an in-State Park:</h3>
             <datalist id="statesList"></datalist>
-            <input type="button" value="Find parks" id="findBtn" class="hoverable card grey darken-4 btn">
+
         </div>
 <!--Search Bar and Submit Button Ends -->
 
@@ -110,15 +94,14 @@
             <div class="section">
                 <div class="card blue-grey darken-1">
                     <div class="card-content white-text">
-                <h2>API Generated Title 1</h2>
+                <h2>In State National Park Name </h2>
                 <div class="card-image">
-                    <img src="./assets/photos/st-mary-banner.jpeg">
-                    <span class="card-title">Card Title</span>
+                    <img id="parkImage" src="./assets/photos/boating (2).jpg">
                   </div>
-                    <article class="col s8 flow-text">API generated content could go here</article>
+                    <article class="col s8 flow-text">in state national park information goes here</article>
                     <div class="card-action">
-                        <a href="#">link could go here</a>
-                        <a href="#">link could go here</a>
+                        <a href="#">movie link</a>
+                        <a href="#">book link</a>
                       </div>
                     </div>
                 </div>
@@ -130,38 +113,16 @@
                         <div class="section-1">
                             <div class="card blue-grey darken-1 ">
                                 <div class="card-content white-text">
-                            <h2 id="park"></h2>
+                            <h2 id="park">Air Quality</h2>
                             <div class="card-image">
-                                <img id = "parkImage" src="./assets/photos/st-mary-banner.jpeg">
-                                <span class="card-title">Card Title</span>
+                                <img id = "activityImage" src="./assets/photos/eagle.jpg">
                               </div>
-                                <article class="description col s8 flow-text">API generated content could go here</article>
-                                <div class="card-action">
-                                    <a href="#">link could go here</a>
-                                    <a href="#">link could go here</a>
-                                  </div>
+                                <article class="description col s8 flow-text">air quality information goes here</article>
                                 </div>
                             </div>
                         </div>
                                     <div class ="divider"></div>
 <!--API Content, Later to be rendered in JS, AREA TWO ENDS -->
-
-<!--API Content, Later to be rendered in JS, AREA THREE, WEBCAM OPTION STARTS -->
-                        <div class="section">
-                            <div class=" col s6">
-                            <div class="card blue-grey darken-1">
-                                <div class="card-content white-text">    
-            <h2>Live API Generated Camera Option</h2>
-                <video class="responsive-video" controls>
-                     <source src="" type="video/mp4">
-              </video>
-            </div>
-                            </div>
-        </div>
-    </div>
-</div>
-                        <div class ="divider"></div>
-<!--API Content, Later to be rendered in JS, AREA THREE, WEBCAM OPTION ENDS -->
 
         </div>
     <!--Page Layout Ends-->
