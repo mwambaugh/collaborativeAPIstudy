@@ -15,7 +15,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <!--End of Materialize -->
 <link rel="stylesheet" href="./assets/style.css">
-    <title>Collobrative Multiple API Study</title>
+    <title>United States' National Parks Traveler's Dashboard</title>
 <!-- Jumbotron Styled Starts-->
     <style>
         header{
@@ -34,23 +34,7 @@
 </head>
 
 
-<!--Start of HTML body -->
-
-<!-- Breadcrumb Navigation Option Starts-->
-<body>
-    <header>
-        <nav>
-            <div class="blue-grey darken-1 nav-wrapper">
-              <div class="col s12 align-right">
-                <a href="#!" class="breadcrumb">Breadcrumb</a>
-                <a href="#!" class="breadcrumb">Navigation</a>
-                <a href="#!" class="breadcrumb">Option</a>
-              </div>
-            </div>
-          </nav>
-<!--Breadcrumb Navigation Option Ends -->
-
-        <!--Navigation Bar Starts -->
+ <!--Navigation Bar Starts -->
         <!-- Dropdown Structure -->
         <!-- to activate dropdown feature: $(".dropdown-trigger").dropdown(); OR 
         document.addEventListener('DOMContentLoaded', function() {
@@ -58,6 +42,13 @@
     var instances = M.Dropdown.init(elems, options);
   });
 -->
+
+
+<!--Start of HTML body -->
+
+<!-- Breadcrumb Navigation Option Starts-->
+<body>
+    <header>
 
 <!--Dropdown Navigation Content Starts-->
 <ul id="dropdown1" class="dropdown-content">
@@ -76,13 +67,12 @@
   <!--Banner and Hoverable Navigation Bar Option Starts -->
         <nav>
             <div class="card-pannel blue-grey nav-wrapper">
-                <div class="brand-logo black-text blue-grey">API Project Website Title Here</div>  
+                <div class="brand-logo black-text blue-grey">US National Parks Traveler's Dashboard</div>  
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li class="hoverable btn-large blue-grey darken-2"><a href="">Hoverable</a></li>
-                <li class="hoverable btn-large blue-grey darken-2"><a href="">Navigation</a></li>
-                <li class="hoverable btn-large blue-grey darken-2"><a href="">Option</a></li>
+                <li class="hoverable btn-large blue-grey darken-2"><a href="">Home</a></li>
+                <li class="hoverable btn-large blue-grey darken-2"><a href="">In State Parks</a></li>
+                <li class="hoverable btn-large blue-grey darken-2"><a href="">Air Quality</a></li>
             <!-- Dropdown Trigger -->
-                <li><a class="hoverable btn-large dropdown-trigger blue-grey darken-2" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
             </ul>
         </nav>
 
@@ -96,13 +86,18 @@
 <!-- Search Bar and Submit Button Starts-->
     <div class="container">
         <div class="row">
-            <h3 class = "col s8">Search Activites:</h3>
+            <!-- <h3 class = "col s8">Search Activites:</h3>
             <input list="activitiesList" id="searchActivitiesField" name="activities">
-            <datalist id="activitiesList"></datalist>
-            <h3 class = "col s8">Search States:</h3>
+            <datalist id="activitiesList"></datalist> -->
+            
+            <h3 class = "col s8 btn-large dropdown-trigger blue-grey darken-2 href="#!" data-target="dropdown1" ><i class="material-icons right"></i></a>Select State:</h3>
             <input list="statesList" id="stateField" name="activities">
-            <datalist id="statesList"></datalist>
+
             <input type="button" value="Find parks" id="findBtn" class="hoverable card grey darken-4 btn">
+            
+            <h3 class = "col s8 btn-large dropdown-trigger blue-grey darken-2 href="#!" data-target="dropdown1"><i class="material-icons right"></i></a>Select an in-State Park:</h3>
+            <datalist id="statesList"></datalist>
+
         </div>
 <!--Search Bar and Submit Button Ends -->
 
