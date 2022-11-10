@@ -6,8 +6,9 @@ var searchField = document.querySelector("#searchActivitiesField");
 var stateField = document.querySelector("#stateField");
 var dataListEl = document.querySelector("#activitiesList");
 var dataListEl1 = document.querySelector("#statesList");
-//Btn = document.querySelector("#findBtn");
-
+var selectStateMenu = document.querySelector("#selectStateMenu");
+var selectParksMenu = document.querySelector("#selectParksMenu");
+var randomBookLink = document.querySelector("#randomBook");
 var displayCardEl = document.getElementsByClassName("section-1")
 var parkNameDisplay = document.getElementById("park")
 var parkImageDisplay = document.getElementById("parkImage")
@@ -21,7 +22,9 @@ var allStatesDropdown = document.querySelector("#dropdown1");
 //var arrays
 var dataArr = [];
 var parksArr = [];
-
+// Anton - dropdownMenuDefault title
+const dropdown1MenuDefaultTitle = selectStateMenu.textContent;
+const dropdown2MenuDefaultTitle = selectParksMenu.textContent;
 //Anton - all states array
 var allStates = [
     {
@@ -312,18 +315,7 @@ async function getNPSdata(requestUrl) {
         });
 }
 
-// get list of activities list
-// async function getActivitiesList(limit){
-//     await getNPSdata(npsBaseAPIUrl+npsAPI_data[0]+"&limit="+limit+"&"+npsAPIkey);
-//             dataArr.forEach(element => {
-//                 var optionEl = document.createElement("option");
-//                 optionEl.setAttribute("value", element.name);
-//                 dataListEl.append(optionEl);
-//             });
-            
-// };
 
-//get activity ID by name
 async function getActivityIdByName(name) {
     dataArr = [];
     await getNPSdata(npsBaseAPIUrl+npsAPI_data[0]+"&"+npsAPIkey);
@@ -338,20 +330,6 @@ async function getParksListByActivityId(activityId, limit) {
     await getNPSdata(npsBaseAPIUrl+npsAPI_data[1]+"&limit="+limit+"&"+activityId+"&"+npsAPIkey);
 }
 
-//get all states (US States API)
-// async function getAllStates() {
-//     const response = await fetch('https://us-states.p.rapidapi.com/basic', options);
-//     return await response.json()
-//     .then(function (data) {
-//         data.forEach(element => {
-//             var option = document.createElement("option");
-//             option.setAttribute("value", element.postal);
-//             dataListEl1.appendChild(option);
-//         });
-//     });
-// }
-
-
 
 // get movie (OMDB API)
 async function getMovieInfo(requestUrl) {
@@ -362,12 +340,15 @@ async function getMovieInfo(requestUrl) {
         });
 }
 
-//get books
-async function getBooks(requestUrl) {
+//get RanDom books
+async function getRandomBook(requestUrl) {
     const responce = await fetch(requestUrl);
     return await responce.json()
     .then(function (data) {
-       console.log(data);
+        var randomBook = data.docs[Math.floor(Math.random() * data.docs.length)];
+        console.log(randomBook);
+        randomBookLink.setAttribute("href", "https://openlibrary.org"+ randomBook.key);
+        randomBookLink.textContent = "Suggested book: "+randomBook.title;
         });
 }
 
@@ -384,42 +365,6 @@ async function getPlaces(requestUrl) {
 }
 
 
-//getActivitiesList(40);
-// getAllStates();
-
-//find button handler
-// findBtn.addEventListener("click", async function (ev) {
-//     var activityId = "id="+ await getActivityIdByName(searchField.value);
-//     await getParksListByActivityId(activityId,1);
-//     var parksByState = dataArr[0].parks.filter(function(state) {
-//         return state.states == stateField.value;
-//     });
-    
-    // //get movie info by park name (designation)
-    // parksByState.forEach(async element => {
-    //     await getMovieInfo(omdbBaseAPIUrl+element.designation+"&"+omdbAPIkey);
-    //     console.log(element);
-    // });
-
-    // //get books by by park name (fullName)
-    // parksByState.forEach(async element => {
-    //     await getBooks(openlibraryBaseAPIUrl+element.fullName.replace(" ","+"));
-    //     console.log(element);
-    // });
-
-    //getPlaces
-    //parksByState.forEach(async element => {
-        
-        // await getPlaces(npsBaseAPIUrl+npsAPI_data[3]+"&parkCode="+parksByState[0].parkCode+"&limit=1"+"&stateCode="+ stateField.value+"&"+npsAPIkey);
-    //});
-
-
-
-//});
-
-//1. api pull config on console to find data is being pulled
-//2. what event we are pulling from the api
-//3. 
 
 
 function getAPI(userChoice) {
@@ -446,12 +391,9 @@ function getAPI(userChoice) {
 
         }
     })
-
-        
-    
-     
-
 }
+
+
 
 function getweatherdata() {
     var lat = 47.8021//data.latitute
@@ -493,9 +435,15 @@ document.addEventListener("click",function (ev) {
     var stateUserChoice ="";
     if(ev.target.parentNode.id === "dropdown1"){
         stateUserChoice = ev.target.id;
+        var currentStateName = ev.target.textContent;
+        selectStateMenu.textContent = dropdown1MenuDefaultTitle;
+        selectStateMenu.innerHTML = selectStateMenu.innerHTML +" "+currentStateName;
         getAPI(stateUserChoice);
     }
     if(ev.target.parentNode.id === "dropdown2"){
-        // To do Ravi's state parks list
+        var parkName = ev.target.textContent;
+        selectParksMenu.textContent = dropdown2MenuDefaultTitle;
+        selectParksMenu.innerHTML =selectParksMenu.innerHTML+" "+parkName;
+        getRandomBook(openlibraryBaseAPIUrl+parkName);
     }
 })
