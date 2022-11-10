@@ -6,7 +6,7 @@ var searchField = document.querySelector("#searchActivitiesField");
 var stateField = document.querySelector("#stateField");
 var dataListEl = document.querySelector("#activitiesList");
 var dataListEl1 = document.querySelector("#statesList");
-//Btn = document.querySelector("#findBtn");
+var selectStateMenu = document.querySelector("#selectStateMenu");
 
 var displayCardEl = document.getElementsByClassName("section-1")
 var parkNameDisplay = document.getElementById("park")
@@ -493,6 +493,9 @@ document.addEventListener("click",function (ev) {
     var stateUserChoice ="";
     if(ev.target.parentNode.id === "dropdown1"){
         stateUserChoice = ev.target.id;
+        var currentStateName = ev.target.textContent;
+        console.log(currentStateName);
+        selectStateMenu.innerHTML = selectStateMenu.innerHTML +" "+currentStateName;
         getAPI(stateUserChoice);
     }
     if(ev.target.parentNode.id === "dropdown2"){
