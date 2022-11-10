@@ -446,6 +446,7 @@ function getAPI(userChoice) {
             newli.append(newAtag)
             dropDown2.append(newli)
 
+    
         }
     })
 
@@ -501,3 +502,51 @@ document.addEventListener("click",function (ev) {
         // To do Ravi's state parks list
     }
 })
+
+// // // displayData()
+// userChoice = []
+// fetch("https://developer.nps.gov/api/v1/parks?&statecode="+userChoice+"&api_key=krIy1i5fL7pkviggfyuAli8fyRvpj4yejHKSRxSK")
+//     .then(function (response) {
+//         return response.json();
+//     })
+//     .then(function (data) {
+//         console.log(data);
+//         var pactivities = data.data.length
+//         console.log(pactivities
+//     })
+
+// // function renderParkData(parksActivities, parksAddress, parksDescription,
+// //     parksImages, parksLat, parksLong, parksName, parksWeatherInfo) {
+// //         parksActivitiesEl.text() //placeholder for activites
+// //         parksAddressEl.text() //placeholder for address
+// //         parksDescriptionEl.text() //placeholder for description
+// //         parksImagesEl.text() //placeholder for images
+// //         parksLatEl.text() //placeholder for latitude
+// //         parksLongEl.text() //placeholder for longatude
+// //         parksNameEl.text() //placeholder for name
+// //         parksWeatherInfoEl.text() //placeholder for weather info
+// //     }
+
+// //     function getParkdata(userchoice) {
+// //         let queryUrl = "https://developer.nps.gov/api/v1/parks?&statecode="+userChoice+"&api_key=krIy1i5fL7pkviggfyuAli8fyRvpj4yejHKSRxSK";
+// //         $.ajax({
+// //             url: queryUrl,
+// //             method: "GET"
+// //         })
+// //         .then(function(data) {
+// //             let statepark = {
+// //                 parksActivities : data.activities,
+// //                 parksAddress : data.address,
+
+           
+
+// //             }
+// //         })
+        
+
+
+        
+    
+
+
+// // cosole. log to get data
