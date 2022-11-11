@@ -9,14 +9,17 @@ var dataListEl1 = document.querySelector("#statesList");
 //Btn = document.querySelector("#findBtn");
 
 var displayCardEl = document.getElementsByClassName("section-1")
-var parkNameDisplay = document.getElementById("park")
-var parkImageDisplay = document.getElementById("parkImage")
-var parkDescription = document.getElementsByClassName("desription")
+// var parkNameDisplay = document.getElementById("park")
+// var parkImageDisplay = document.getElementById("parkImage")
+// var parkDescription = document.getElementsByClassName("desription")
 
 var parkNameDisplay = document.getElementById("park")
 var parkImageDisplay = document.getElementById("parkImage")
-var parkDescription = document.getElementsByClassName("desription")
+// var parkDescription = document.getElementsByClassName("desription")
 var allStatesDropdown = document.querySelector("#dropdown1");
+var parkURL = document.getElementById("URLInfo");
+var mainparkDescription = document.getElementById("descriptionPark");
+
 
 //var arrays
 var dataArr = [];
@@ -297,6 +300,7 @@ function getAllStates() {
         liEl.setAttribute("id",element.abbreviation);
         allStatesDropdown.appendChild(liEl);
     });
+
 }
 //Anton - call the function
 getAllStates();
@@ -437,15 +441,37 @@ function getAPI(userChoice) {
         console.log(parkNum, "TTEESSSTTT Array length")
         for (let i =0; i < parkNum; i++){
             var parkNameList = data.data[i].name
+            var parkImage = data.data[i].images[0].url
+            var descriptionPark = data.data.description[0] //notworking
+            var URLInfo = data.data[i].url[0] //not working
             console.log(parkNameList)
+            console.log(parkImage, "test test")
+            console.log(description, "testing description")
+            console.log(url, "testing link for url")
             var dropDown2 = document.getElementById("dropdown2")
             var newli = document.createElement("li")
 
-            newli.textContent = parkNameList
 
-            newli.append(newAtag)
+
+            
+            // newli.textContent = parkNameList
+
+            // newli.append(newAtag)
             dropDown2.append(newli)
+            park.append(); //trying to append image to card
 
+            //parks name
+            var h2El = document.createElement('h2');
+            h2El.textContent(parkNameList);
+            parkNameList.append(park);
+
+            // href link for  URLInfo and paragraph description for content slide 1
+            var linkButtonEl = document.createElement('a');
+            linkButtonEl.setAttribute('href', URLInfo.url);
+            var articleEl = document.createElement('p');
+            articleEl.textContent(descriptionPark);
+
+    
         }
     })
 
@@ -479,7 +505,7 @@ function displayData(data){
 displayCardEl.innerHTML = "";
 }
 
-//getAPI();
+// getAPI();
 getweatherdata();
 // displayData()
 
@@ -501,3 +527,51 @@ document.addEventListener("click",function (ev) {
         // To do Ravi's state parks list
     }
 })
+
+// // // displayData()
+// userChoice = []
+// fetch("https://developer.nps.gov/api/v1/parks?&statecode="+userChoice+"&api_key=krIy1i5fL7pkviggfyuAli8fyRvpj4yejHKSRxSK")
+//     .then(function (response) {
+//         return response.json();
+//     })
+//     .then(function (data) {
+//         console.log(data);
+//         var pactivities = data.data.length
+//         console.log(pactivities
+//     })
+
+// // function renderParkData(parksActivities, parksAddress, parksDescription,
+// //     parksImages, parksLat, parksLong, parksName, parksWeatherInfo) {
+// //         parksActivitiesEl.text() //placeholder for activites
+// //         parksAddressEl.text() //placeholder for address
+// //         parksDescriptionEl.text() //placeholder for description
+// //         parksImagesEl.text() //placeholder for images
+// //         parksLatEl.text() //placeholder for latitude
+// //         parksLongEl.text() //placeholder for longatude
+// //         parksNameEl.text() //placeholder for name
+// //         parksWeatherInfoEl.text() //placeholder for weather info
+// //     }
+
+// //     function getParkdata(userchoice) {
+// //         let queryUrl = "https://developer.nps.gov/api/v1/parks?&statecode="+userChoice+"&api_key=krIy1i5fL7pkviggfyuAli8fyRvpj4yejHKSRxSK";
+// //         $.ajax({
+// //             url: queryUrl,
+// //             method: "GET"
+// //         })
+// //         .then(function(data) {
+// //             let statepark = {
+// //                 parksActivities : data.activities,
+// //                 parksAddress : data.address,
+
+           
+
+// //             }
+// //         })
+        
+
+
+        
+    
+
+
+// // cosole. log to get data

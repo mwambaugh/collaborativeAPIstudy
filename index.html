@@ -52,7 +52,7 @@
   </ul>
   <!-- Dropdown Navigation Content Ends-->
   <ul id="dropdown2" class="dropdown-content">
-
+    </ul>
   <!--Banner and Hoverable Navigation Bar Option Starts -->
         <nav>
             <div class="card-pannel blue-grey nav-wrapper">
@@ -79,29 +79,30 @@
             <input list="activitiesList" id="searchActivitiesField" name="activities">
             <datalist id="activitiesList"></datalist> -->
             
-            <h3 class = "col s8 btn-large dropdown-trigger blue-grey darken-2 href="#!" data-target="dropdown1" ><i class="material-icons right"></i></a>Select State:</h3>
+            <h3 class = "col s8 btn-large dropdown-trigger blue-grey darken-2 href="#!" data-target="dropdown1" id="selectStateMenu"><i class="material-icons right"></i></a>Select State:</h3>
             <!-- <input list="statesList" id="stateField" name="activities"> -->
 
             <!-- <input type="button" value="Find parks" id="findBtn" class="hoverable card grey darken-4 btn"> -->
             
-            <h3 class = "col s8 btn-large dropdown-trigger blue-grey darken-2 href="#!" data-target="dropdown1"><i class="material-icons right"></i></a>Select an in-State Park:</h3>
+            <h3 class = "col s8 btn-large dropdown-trigger blue-grey darken-2 href="#!" data-target="dropdown2" id="selectParksMenu"><i class="material-icons right"></i></a>Select an in-State Park:</h3>
             <datalist id="statesList"></datalist>
 
         </div>
 <!--Search Bar and Submit Button Ends -->
 
 <!--API Content, Later to be rendered in JS, AREA ONE STARTS -->
-            <div class="section">
+            <div class="section-1">
                 <div class="card blue-grey darken-1">
                     <div class="card-content white-text">
-                <h2>In State National Park Name </h2>
+                <h2 id="park">In State National Park Name </h2>
                 <div class="card-image">
                     <img id="parkImage" src="./assets/photos/boating (2).jpg">
+                    
                   </div>
-                    <article class="col s8 flow-text">in state national park information goes here</article>
+                    <article class="col s8 flow-text" id="descriptionPark">in state national park information goes here</article>
                     <div class="card-action">
-                        <a href="#">movie link</a>
-                        <a href="#">book link</a>
+                        <a id="URlinfo" href="#">movie link</a>
+                        <a href="#" id="randomBook">book link</a>
                       </div>
                     </div>
                 </div>
@@ -110,7 +111,7 @@
 <!-- CONTENT AREA ONE ENDS-->
             
 <!--API Content, Later to be rendered in JS, AREA TWO STARTS -->
-                        <div class="section-1">
+                        <div class="section-2">
                             <div class="card blue-grey darken-1 ">
                                 <div class="card-content white-text">
                             <h2 id="park">Air Quality</h2>
