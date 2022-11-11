@@ -21,10 +21,28 @@ var parkURL = document.getElementById("URLInfo");
 var mainparkDescription = document.getElementById("descriptionPark");
 
 
+var divCO = document.querySelector("#CO");
+var divNO = document.querySelector("#NO");
+var divNO2 = document.querySelector("#NO2");
+var divO3 = document.querySelector("#O3");
+var divSO2 = document.querySelector("#SO2");
+var divPM2_5 = document.querySelector("#PM2_5");
+var divPM10 = document.querySelector("#PM10");
+var divNH3 = document.querySelector("#NH3");
+var spanAQI = document.querySelector("#aqi");
+
+
 //var arrays
 var dataArr = [];
 var parksArr = [];
+<<<<<<< HEAD:assets/script.js
+var airQualityArr = [" (Good)"," (Fair)"," (Moderate)"," (Poor)", " (Very poor)"];
+// Anton - dropdownMenuDefault title
+const dropdown1MenuDefaultTitle = selectStateMenu.textContent;
+const dropdown2MenuDefaultTitle = selectParksMenu.textContent;
+=======
 
+>>>>>>> develop:assets/js/script.js
 //Anton - all states array
 var allStates = [
     {
@@ -265,6 +283,14 @@ var allStates = [
     }
 ];
 
+var stateUserChoice = (localStorage.getItem("storedState")!==null)?localStorage.getItem("storedState"):"";
+var parkName  = (localStorage.getItem("storedPark")!==null)?localStorage.getItem("storedPark"):"";
+let coordinates = (localStorage.getItem("storedCoordinates")!==null)?localStorage.getItem("storedCoordinates"):"";
+if (stateUserChoice!=="" && parkName!=="" && coordinates!=="") {
+    getRandomBook(openlibraryBaseAPIUrl+parkName);
+    getAirQuality(coordinates);
+}
+
 //Anton - set local storage
 localStorage.setItem("allStates", JSON.stringify(allStates));
 
@@ -280,19 +306,34 @@ var omdbAPIkey = "apikey=49e6bea4";
 //base string variables for Open library API
 var openlibraryBaseAPIUrl = "https://openlibrary.org/search.json?q=";
 
-//options for states API
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '3485d2416dmshf3851a0ece18262p1388bcjsnc27df98ffa00',
-		'X-RapidAPI-Host': 'us-states.p.rapidapi.com'
-	}
-};
+//Anton - base string vars for openWeather API
+var openWeatherAirQualityAPI = "http://api.openweathermap.org/data/2.5/air_pollution?";
+var openWeatherAPIkey = "&appid=81400ac056ac2215ad92e79b9c4185bb";
+
+
+
+//Anton - fetch Air quality
+async function getAirQuality(coordinates) {
+    const responce = await fetch(openWeatherAirQualityAPI+coordinates+openWeatherAPIkey);
+    return await responce.json()
+    .then(function (data) {
+       divCO.textContent = data.list[0].components.co;
+       divNH3.textContent = data.list[0].components.nh3;
+       divNO.textContent = data.list[0].components.no;
+       divNO2.textContent = data.list[0].components.no2;
+       divO3.textContent = data.list[0].components.o3;
+       divPM10.textContent = data.list[0].components.pm10;
+       divPM2_5.textContent = data.list[0].components.pm2_5;
+       divSO2.textContent = data.list[0].components.so2;
+       spanAQI.textContent = data.list[0].main.aqi+airQualityArr[data.list[0].main.aqi-1];
+        });
+}
+
 
 
 //Anton - function generate data list with All states
 function getAllStates() {
-	allStates = (typeof(localStorage) !== "undefined")?JSON.parse(localStorage.getItem("allStates")):allStates;
+	allStates = JSON.parse(localStorage.getItem("allStates"));
     allStates.forEach(element => {
         //console.log(element.stateName);
         var liEl = document.createElement("li");
@@ -305,6 +346,8 @@ function getAllStates() {
 //Anton - call the function
 getAllStates();
 
+<<<<<<< HEAD:assets/script.js
+=======
 // basic function to retrieve NP data
 async function getNPSdata(requestUrl) {
     const responce = await fetch(requestUrl);
@@ -328,6 +371,7 @@ async function getNPSdata(requestUrl) {
 // };
 
 //get activity ID by name
+>>>>>>> develop:assets/js/script.js
 async function getActivityIdByName(name) {
     dataArr = [];
     await getNPSdata(npsBaseAPIUrl+npsAPI_data[0]+"&"+npsAPIkey);
@@ -429,8 +473,8 @@ async function getPlaces(requestUrl) {
 function getAPI(userChoice) {
     var NPAPI = "https://developer.nps.gov/api/v1/parks?&statecode="+userChoice+"&api_key=krIy1i5fL7pkviggfyuAli8fyRvpj4yejHKSRxSK"
 
-    fetch(NPAPI)
-        .then(function (response) {
+   fetch(NPAPI)
+        .then(async function (response) {
 
         return response.json();
         })
@@ -440,6 +484,15 @@ function getAPI(userChoice) {
         var parkNum = data.data.length
         console.log(parkNum, "TTEESSSTTT Array length")
         for (let i =0; i < parkNum; i++){
+<<<<<<< HEAD:assets/script.js
+            var parkNameList = data.data[i].name;
+            coordinates = "&lat="+data.data[i].latitude+"&lon="+data.data[i].longitude;
+            localStorage.setItem("storedCoordinates", coordinates);
+            var dropDown2 = document.getElementById("dropdown2");
+            var newli = document.createElement("li");
+            newli.textContent = parkNameList;
+            dropDown2.append(newli);
+=======
             var parkNameList = data.data[i].name
             var parkImage = data.data[i].images[0].url
             var descriptionPark = data.data.description[0] //notworking
@@ -464,6 +517,7 @@ function getAPI(userChoice) {
             var h2El = document.createElement('h2');
             h2El.textContent(parkNameList);
             parkNameList.append(park);
+>>>>>>> develop:assets/js/script.js
 
             // href link for  URLInfo and paragraph description for content slide 1
             var linkButtonEl = document.createElement('a');
@@ -479,6 +533,8 @@ function getAPI(userChoice) {
     
      
 
+<<<<<<< HEAD:assets/script.js
+=======
 }
 
 function getweatherdata() {
@@ -501,26 +557,61 @@ function getweatherdata() {
         })   
 }
 
+>>>>>>> develop:assets/js/script.js
 function displayData(data){
 displayCardEl.innerHTML = "";
 }
 
+<<<<<<< HEAD:assets/script.js
+//getAPI();
+//getweatherdata();
+=======
 // getAPI();
 getweatherdata();
+>>>>>>> develop:assets/js/script.js
 // displayData()
 
 
 //Anton - dropdown trigger
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems, options);
+    var instances = M.Dropdown.init(elems);
+    var tabs = document.querySelectorAll('.card-tabs');
+    var instance = M.Tabs.init(tabs);
 });
 
 //Anton - dropdown all states event listener
 document.addEventListener("click",function (ev) {
-    var stateUserChoice ="";
+    
     if(ev.target.parentNode.id === "dropdown1"){
         stateUserChoice = ev.target.id;
+<<<<<<< HEAD:assets/script.js
+        localStorage.setItem("storedState",stateUserChoice);
+        var currentStateName = ev.target.textContent;
+        selectStateMenu.textContent = dropdown1MenuDefaultTitle;
+        selectStateMenu.innerHTML = selectStateMenu.innerHTML +" "+currentStateName;
+        getAPI(stateUserChoice);
+    }
+    if(ev.target.parentNode.id === "dropdown2"){
+        parkName = ev.target.textContent;
+        localStorage.setItem("storedPark",parkName);
+        selectParksMenu.textContent = dropdown2MenuDefaultTitle;
+        selectParksMenu.innerHTML =selectParksMenu.innerHTML+" "+parkName;
+        getRandomBook(openlibraryBaseAPIUrl+parkName);
+        getAirQuality(coordinates);
+    }
+})
+
+
+
+
+// 1. select state
+// 2. get parks  array (objectsArray) by state name
+// 3. arrParks = objectsArray
+// 4. if arrParks.some(object=> object.parkCode == Olympic) 
+// 5. then { var array1 = arrParks.filter(function(parkName){ return parkName == "name from dropdown menu"})}
+// hook all data from  array1
+=======
         getAPI(stateUserChoice);
     }
     if(ev.target.parentNode.id === "dropdown2"){
@@ -575,3 +666,4 @@ document.addEventListener("click",function (ev) {
 
 
 // // cosole. log to get data
+>>>>>>> develop:assets/js/script.js
