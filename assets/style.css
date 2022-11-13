@@ -1,6 +1,45 @@
 
-.inline { 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    }
+body {
+    background:linear-gradient(90deg,rgb(69,90,100), 15%, rgb(247,214,199), 85%, rgb(69,90,100));
+}
+
+.dropdown-trigger {
+    color: rgb(247,214,199);
+    height:80px;
+    border-radius: 25px;
+    border: #ffffff;
+    box-shadow: #000000 0 2px 5px 2px;
+    padding: 5px;
+    border-style: outset;
+    font-size: 40px; 
+}
+
+.card {
+    border: #ffffff;
+    box-shadow: #000000 0 2px 5px 2px;
+}
+
+.card-action a {
+    height: 20px;
+    border-radius: 25px;
+    border: #ffffff;
+    box-shadow: #000000 0 2px 5px 2px;
+    padding: 5px;
+    border-style: outset;
+    font-size: 15px;  
+}
+
+.card-airContent {
+    padding: 8px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    
+}
+    
+.card-airContent div {
+    padding:20px ;
+    display: inline-flex;
+    width:12.5%
+}
