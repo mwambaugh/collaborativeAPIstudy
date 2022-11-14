@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Movie Randomizer</title>
+    <link rel="stylesheet" href="..//random-movieizer/assets/css/movie-stylesheet.css" />
+    <script type="text/javascript" 
+          src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+  </head>
+
+  <body>
+    <header class="title">
+      <h1 class="header">Random Movie Generator</h1>
+    </header>
+    <main class="flex-row">
+      <div class="generator">
+        <div class="randomizer">
+          <button id="generateBtn" class="btn">Randomize a Movie!</button>
+        </div>
+        <div id="randomized-movies"></div>
+        <div id="delete-history"></div>
+      </div>
+      <div class="movie-info">
+        <!--
+       <h3>Movie</h3>
+       -->
+
+        <div id="movie-image"></div>
+        <div id="movie-title"></div>
+        <div id="movie-plot"></div>
+        <div id="more-info"></div>
+      </div>
+    </main>
+    <script src="./assets/js/movie-script.js"></script>
+  </body>
+</html>
