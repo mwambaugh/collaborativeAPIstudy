@@ -42,7 +42,17 @@ NaN
 ## Questions
 Please reach out to me though my GitHub or via E-mail with any questions or concerns you may have <br/>
 rasvindra@hotmail.com <br/>
-[github.com/rasvindra, mwambaugh, kas500, hkim84](https://github.com/rasvindra, mwambaugh, kas500, hkim84)
+https://github.com/rasvindra <br/>
+
+eloael@outlook.com <br/>
+https://github.com/hkim84 <br/>
+
+marwambaugh@gmail.com <br/>
+https://github.com/mwambaugh/collaborativeAPIstudy <br/>
+
+krasnikovanton84@gmail.com<br/>
+github.com/kas500 <br/>
+
 
 
 # Visuals
@@ -56,7 +66,13 @@ MIT
 
 ## Deployed
 
-##Accpetance Criteria  
+
+
+![](assets/images/NPScollabShot.PNG)
+
+
+
+## Accpetance Criteria  
 Use a CSS framework other than Bootstrap.
 
 Be deployed to GitHub Pages.
