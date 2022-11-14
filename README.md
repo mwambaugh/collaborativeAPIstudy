@@ -51,7 +51,7 @@ marwambaugh@gmail.com <br/>
 https://github.com/mwambaugh/collaborativeAPIstudy <br/>
 
 krasnikovanton84@gmail.com<br/>
-github.com/kas500 <br/>
+https://github.com/kas500 <br/>
 
 
 
@@ -65,7 +65,7 @@ github.com/kas500 <br/>
 MIT
 
 ## Deployed
-
+https://mwambaugh.github.io/collaborativeAPIstudy
 
 
 ![](assets/images/NPScollabShot.PNG)
