@@ -327,8 +327,7 @@ var openWeatherAPIkey = "&appid=81400ac056ac2215ad92e79b9c4185bb";
     .then(function (data) {
         var randomBook = data.docs[Math.floor(Math.random() * data.docs.length)];
         randomBookLink.setAttribute("href", "https://openlibrary.org"+ randomBook.key);
-        var bookTitle = (randomBook.title.length>25)?randomBook.title.slice(0,25)+"...":randomBook.title;
-        randomBookLink.textContent = "Random document/Book with Park Referance: "+bookTitle;
+        randomBookLink.textContent = "Random document/Book with Park Referance";
         });
 }
 
