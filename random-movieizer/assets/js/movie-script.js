@@ -1,5 +1,3 @@
-lines (200 sloc)  7.01 KB
-
 var generateBtnEl = document.querySelector("#generateBtn");
 var imageEl = document.querySelector("#movie-image");
 var movieMoreInfo = document.querySelector(".movie-info");
